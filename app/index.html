@@ -3,20 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Vice Cover Studio — GTA 6-style cover art maker</title>
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
+  <section class="controls" aria-label="Cover editor">
+    <header>
+      <h1>Vice Cover Studio</h1>
+      <p class="tagline">Your photo + a caption, turned into a GTA 6-style multi-panel cover. Three steps: add photos, pick a panel, export.</p>
+    </header>
+
+    <section class="group" aria-label="Photos">
+      <h2>1 · Your photos</h2>
+      <p class="hint">Up to four photos, straight from your machine. Nothing is uploaded.</p>
+      <div id="photo-slots" class="slots"></div>
+      <p class="hint">Tip: the first photo fills the poster; assign the others to single panels below.</p>
+    </section>
+
+    <section class="group" aria-label="Panels">
+      <h2>2 · Panels</h2>
+      <p class="hint">Click a panel on the cover, or pick one here, then frame its photo.</p>
+      <div id="panel-chips" class="chips"></div>
+      <label>Photo in this panel
+        <select id="assign"></select>
+      </label>
+      <label>Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.01" value="1"></label>
+      <label>Move left / right <input id="panx" type="range" min="-0.4" max="0.4" step="0.01" value="0"></label>
+      <label>Move up / down <input id="pany" type="range" min="-0.4" max="0.4" step="0.01" value="0"></label>
+      <button id="fill-all" type="button" class="secondary">Fill all panels with this photo</button>
+    </section>
+
+    <section class="group" aria-label="Words and look">
+      <h2>3 · Words &amp; look</h2>
+      <label>Caption <input id="caption" type="text" maxlength="32" value="Sunset Heist"></label>
+      <label>Sub-caption <input id="subcaption" type="text" maxlength="40" value="Neon nights · 2026"></label>
+      <label>Layout <select id="layout"></select></label>
+      <label>Colour grade <select id="grade"></select></label>
+      <label>Export size <select id="size"></select></label>
+    </section>
+
+    <div class="actions">
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <button id="export-all" type="button">Export all 3 sizes</button>
+    </div>
     <p id="status" role="status"></p>
+    <p class="fineprint">Original design, built for make.fun's “Make GTA 6 Cover Art” bounty. No Rockstar logo, artwork or font. Display type: Anton &amp; Archivo Black, Oswald for the sub-caption — all SIL Open Font License, bundled under app/fonts.</p>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+
+  <section class="preview" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <p class="hint">Live preview — click any panel to frame its photo.</p>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>

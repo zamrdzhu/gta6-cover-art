@@ -1,5 +1,1 @@
-[
-  { "name": "1-cover.jpg", "query": "?shot=cover&photo=pier&caption=Sunset%20Heist", "w": 1080, "h": 1080 },
-  { "name": "2-editor.jpg", "query": "?shot=editor&photo=boulevard&caption=Boulevard%20Queen", "w": 1280, "h": 720 },
-  { "name": "3-cover.jpg", "query": "?shot=cover&photo=boulevard&caption=Boulevard%20Queen", "w": 1080, "h": 1080 }
-]
+[{"h":720,"name":"1-cover-wide.jpg","query":"?shot=cover&size=wide&layout=strip&photo=boulevard&photo2=pier&caption=Sunset%20Heist&subcaption=Neon%20nights%20%C2%B7%202026&grade=sunset","w":1280},{"h":720,"name":"2-editor.jpg","query":"?shot=editor&photo=boulevard&caption=Boulevard%20Queen","w":1280},{"h":1080,"name":"3-cover-square.jpg","query":"?shot=cover&size=square&photo=pier&photo2=boulevard&caption=Pier%20Pressure&grade=neon","w":1080},{"h":1280,"name":"4-cover-portrait.jpg","query":"?shot=cover&size=portrait&layout=strip&photo=boulevard&photo2=pier&caption=Golden%20Hour&grade=dusk","w":1024}]

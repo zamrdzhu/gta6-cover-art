@@ -1,12 +1,45 @@
-html, body { margin: 0; height: 100%; background: #f2f0f4; color: #1d1b22; font: 15px/1.4 system-ui, sans-serif; }
-.app { display: flex; gap: 32px; align-items: center; justify-content: center; height: 100%; padding: 24px; box-sizing: border-box; }
-.controls { display: flex; flex-direction: column; gap: 14px; width: 280px; }
-.controls h1 { margin: 0; font-size: 28px; }
-.controls p { margin: 0; color: #5c5866; }
-label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
-input[type=text] { font: inherit; padding: 8px; border: 1px solid #c9c4d1; border-radius: 6px; }
-button { font: inherit; font-weight: 700; padding: 10px; border: 0; border-radius: 6px; background: #1d1b22; color: #fff; cursor: pointer; }
-canvas { width: min(70vh, 60vw); height: min(70vh, 60vw); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+/* Vice Cover Studio — dark neon editor. The preview canvas is sized by the
+   cover renderer itself; CSS only scales it to fit the window. */
+html, body { margin: 0; min-height: 100%; background: #12081f; color: #f4eefb; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.app { display: flex; gap: 28px; align-items: flex-start; justify-content: center; padding: 24px; box-sizing: border-box; }
+.controls { width: 320px; flex: none; display: flex; flex-direction: column; gap: 16px; }
+.controls h1 { margin: 0; font-size: 30px; line-height: 1.1; letter-spacing: 0.5px; color: #ffd166; }
+.tagline { margin: 6px 0 0; color: #c9b8e0; }
+.group { background: #1e0f33; border: 1px solid #3a2358; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.group h2 { margin: 0; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; color: #ff8fb3; }
+.hint { margin: 0; font-size: 13px; color: #a894c4; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; }
+input[type=text], select { font: inherit; padding: 9px 10px; border: 1px solid #4a2f73; border-radius: 8px; background: #160a28; color: #f4eefb; }
+input[type=range] { width: 100%; accent-color: #ff2e88; }
+input[type=file] { font: inherit; font-size: 13px; color: #c9b8e0; }
+button { font: inherit; font-weight: 700; padding: 11px 14px; border: 0; border-radius: 9px; background: #2c1747; color: #f4eefb; cursor: pointer; }
+button:hover { background: #3a2060; }
+button.primary { background: linear-gradient(90deg, #ff2e88, #ff7a2f); color: #fff; font-size: 16px; }
+button.primary:hover { filter: brightness(1.12); }
+button.secondary { background: #241238; }
+.actions { display: flex; flex-direction: column; gap: 10px; }
+.slots { display: flex; flex-direction: column; gap: 8px; }
+.slot { display: flex; align-items: center; gap: 10px; background: #160a28; border: 1px solid #3a2358; border-radius: 8px; padding: 8px 10px; }
+.slot-label { font-weight: 700; flex: none; }
+.slot input { flex: 1; min-width: 0; }
+.thumb { font-size: 12px; color: #8fd6a0; flex: none; }
+.chips { display: flex; gap: 8px; }
+.chip { flex: 1; padding: 8px 4px; font-size: 13px; }
+.chip.active { background: #ff2e88; color: #fff; }
+#status { margin: 0; min-height: 1.2em; font-size: 13px; color: #8fd6a0; }
+.fineprint { margin: 0; font-size: 12px; color: #7d6a99; }
+.preview { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; position: sticky; top: 24px; }
+.preview canvas { width: min(72vh, 100%); height: auto; box-shadow: 0 12px 44px rgba(0, 0, 0, 0.55); border-radius: 4px; cursor: crosshair; }
+.preview .hint { text-align: center; }
+/* Screenshot mode: the cover alone, edge to edge. */
+body.shot-cover { background: #f7f1e6; }
 body.shot-cover .controls { display: none; }
-body.shot-cover .app { padding: 0; }
-body.shot-cover canvas { width: 100vw; height: 100vh; box-shadow: none; }
+body.shot-cover .app { padding: 0; display: block; }
+body.shot-cover .preview { position: static; display: block; }
+body.shot-cover .preview canvas { width: 100vw; height: 100vh; object-fit: contain; box-shadow: none; border-radius: 0; cursor: default; }
+body.shot-cover .preview .hint { display: none; }
+@media (max-width: 900px) {
+  .app { flex-direction: column; align-items: stretch; }
+  .controls { width: auto; }
+  .preview { position: static; }
+}
